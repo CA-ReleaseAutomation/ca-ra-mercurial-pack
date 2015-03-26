@@ -1,0 +1,91 @@
+{
+   "CLIAction" : {
+      "actionPack" : {
+         "name" : "Mercurial SCM",
+         "category" : "SCM",
+         "description" : "Action Pack for mercurial SCM tool",
+         "author" : "Scott Schmitz",
+         "dependencies" : "",
+         "platform" : "",
+         "version" : "1.0  ",
+         "license" : "",
+         "imageLocation" : "http://localhost:8080/RDKServer/workingDirectory/ActionPacks/mercurialscm/Mercurial-Logo.PNG",
+         "lastModified" : "2014-12-29T16:41:03.817-05:00",
+         "tags" : [ ],
+         "packageName" : "mercurialscm"
+      },
+      "name" : "Mercurial - remove",
+      "category" : "Mercurial",
+      "description" : "Schedule the indicated files for removal from the current branch.",
+      "inputParamList" : [ {
+         "name" : "OPTION",
+         "type" : "String",
+         "description" : "Enter the options as you would on the command line.",
+         "required" : false,
+         "variableName" : "option",
+         "arrayOption" : false
+      }, {
+         "name" : "FILE",
+         "type" : "String",
+         "description" : "Enter the files you wish to have removed.",
+         "required" : true,
+         "variableName" : "file",
+         "arrayOption" : false
+      } ],
+      "outputParamList" : [ {
+         "name" : "Execution Output",
+         "type" : "String",
+         "description" : "This output parameter holds the standard output of the command execution.",
+         "filterValue" : "[\\s\\S]*",
+         "filterType" : "REGEX",
+         "variableName" : "executionoutput",
+         "source" : "standardOut",
+         "arrayOption" : false
+      }, {
+         "name" : "Error Output",
+         "type" : "String",
+         "description" : "This output parameter holds the standard error output of the command execution.",
+         "filterValue" : "[\\s\\S]*",
+         "filterType" : "REGEX",
+         "variableName" : "erroroutput",
+         "source" : "standardError",
+         "arrayOption" : false
+      }, {
+         "name" : "Exit Code",
+         "type" : "Integer",
+         "description" : "This output parameter holds the returned exit code of the command execution.",
+         "filterValue" : "",
+         "filterType" : "REGEX",
+         "variableName" : "exitcode",
+         "source" : "exitCode",
+         "arrayOption" : false
+      } ],
+      "successMessage" : "Execution succeeded",
+      "errorCondition" : [ {
+         "parameter" : "Exit Code",
+         "operation" : "NOT_EQUALS",
+         "value" : "0",
+         "message" : "Execution failed ${Exit Code} ${Error Output} ${Execution Output}"
+      } ],
+      "type" : "CLI",
+      "complete" : true,
+      "lastModified" : "2014-12-31T10:20:47.056-05:00",
+      "className" : "MercurialRemove",
+      "packageName" : "com.ca.mercurialscm",
+      "cliCommands" : [ {
+         "command" : "hg remove ${OPTION} ${FILE}",
+         "execDir" : "%TEMP%",
+         "osType" : "WINDOWS",
+         "overwriteOutput" : false,
+         "timeout" : 0,
+         "waitForProcessToFinish" : false
+      }, {
+         "command" : "hg remove ${OPTION} ${FILE}",
+         "execDir" : "/tmp/",
+         "osType" : "LINUX",
+         "overwriteOutput" : false,
+         "timeout" : 0,
+         "waitForProcessToFinish" : false
+      } ]
+   }
+}

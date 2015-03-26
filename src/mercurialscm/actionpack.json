@@ -1,0 +1,16 @@
+{
+   "ActionPack" : {
+      "name" : "Mercurial SCM",
+      "category" : "SCM",
+      "description" : "Action Pack for mercurial SCM tool",
+      "author" : "Scott Schmitz",
+      "dependencies" : "",
+      "platform" : "",
+      "version" : "1.0 ",
+      "license" : "",
+      "imageLocation" : "http://localhost:8080/RDKServer/workingDirectory/ActionPacks/mercurialscm/Mercurial-Logo.PNG",
+      "lastModified" : "2014-12-29T16:41:03.817-05:00",
+      "tags" : [ ],
+      "packageName" : "mercurialscm"
+   }
+}
